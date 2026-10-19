@@ -1,0 +1,1131 @@
+/* =========================================
+   GENERAL
+========================================= */
+
+:root {
+    --burgundy:  #b89555;
+    --burgundy-dark:  #8a6219;
+
+    --olive: #59613a;
+    --olive-dark: #41472b;
+
+    --cream: #f7f1e5;
+
+    --gold: #b89555;
+
+    --white: #ffffff;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    font-family: "Montserrat", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at center,
+            var(--olive) 0%,
+            var(--olive-dark) 70%,
+            #303522 100%
+        );
+
+    color: var(--cream);
+}
+
+
+/* =========================================
+   MAIN INVITATION
+========================================= */
+
+.invite {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+.envelope-container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    padding: 25px 20px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   TOP TEXT
+========================================= */
+
+.top-text {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+    color: var(--cream);
+
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   ENVELOPE
+========================================= */
+
+.envelope {
+    width: 330px;
+    height: 220px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.envelope:hover {
+    transform: translateY(-5px);
+}
+
+
+/* =========================================
+   ENVELOPE BACK
+========================================= */
+
+.envelope-back {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    background: var(--burgundy);
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35);
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   ENVELOPE FRONT
+========================================= */
+
+.envelope-front {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 65%;
+
+    background: var(--burgundy);
+
+    clip-path: polygon(
+        0 0,
+        50% 55%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    border-radius: 0 0 5px 5px;
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   ENVELOPE FLAP
+========================================= */
+
+.envelope-flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 65%;
+
+    background: var(--burgundy-dark);
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    transform-origin: top center;
+
+    transition:
+        transform 0.8s ease;
+
+    z-index: 7;
+}
+
+
+/* =========================================
+   SEAL
+========================================= */
+
+.seal {
+    position: absolute;
+
+    left: 50%;
+    top: 55%;
+
+    transform: translate(-50%, -50%);
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: var(--burgundy-dark);
+
+    font-size: 20px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.3);
+
+    z-index: 10;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/* =========================================
+   TAP TEXT
+========================================= */
+
+.tap-text {
+    margin-top: 28px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+
+    color: var(--cream);
+
+    opacity: 0.85;
+
+    animation: pulse 2s infinite;
+}
+
+
+@keyframes pulse {
+
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+
+}
+
+
+/* =========================================
+   INVITATION CARD
+========================================= */
+
+.card {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(90vw, 360px);
+
+    max-height: 90vh;
+
+    padding: 25px 20px;
+
+    background:url("../image/small.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    color: var(--burgundy-dark);
+
+    border-radius: 15px;
+    
+    
+
+    overflow-y: auto;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.7);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        visibility 0.5s ease;
+
+    z-index: 30;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5);
+
+    border: 2px solid var(--gold);
+}
+
+
+/* =========================================
+   CARD SCROLLBAR
+========================================= */
+
+.card::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+.card::-webkit-scrollbar-track {
+    background: var(--cream);
+}
+
+
+.card::-webkit-scrollbar-thumb {
+    background: var(--olive);
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   OPEN CARD
+========================================= */
+
+.envelope.open .card {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+/* =========================================
+   OPEN FLAP
+========================================= */
+
+.envelope.open .envelope-flap {
+
+    transform:
+        rotateX(180deg);
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   HIDE SEAL
+========================================= */
+
+.envelope.open .seal {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.5);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   HIDE TAP TEXT
+========================================= */
+
+.envelope-container.opened .tap-text {
+
+    opacity: 0;
+
+    visibility: hidden;
+}
+
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.card-content {
+    width: 100%;
+
+    text-align: center;
+}
+
+
+.small-heading {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+
+    color: var(--olive);
+
+    margin-bottom: 8px;
+}
+
+
+.ornament {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    color: var(--gold);
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    margin-bottom: 5px;
+}
+
+
+.together {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 16px;
+
+    font-style: italic;
+
+    margin-bottom: 15px;
+
+    color: #555;
+}
+
+
+/* =========================================
+   NAMES
+========================================= */
+
+.bride-name,
+.groom-name {
+    text-transform: uppercase;
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    color: var(--burgundy-dark);
+
+    line-height: 1.1;
+}
+
+ 
+.and {
+
+    display: block;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+    color: var(--gold);
+
+    margin: 4px 0;
+}
+
+
+/* =========================================
+   INVITATION TEXT
+========================================= */
+
+.invitation-text {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.5;
+
+    margin:
+
+        18px auto;
+
+    max-width: 290px;
+
+    color: #4a4a4a;
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+.date {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 20px 0;
+
+    color: var(--burgundy-dark);
+}
+
+
+.date > span {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    border-right: 1px solid var(--gold);
+
+    padding-right: 12px;
+}
+
+.rsvp-text{
+    display: flex;
+    gap: 5px;
+}
+
+.date div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+.date strong {
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+
+.date small {
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================
+   DETAILS
+========================================= */
+
+.details {
+
+    border-top: 1px solid rgba(89, 97, 58, 0.3);
+
+    border-bottom: 1px solid rgba(89, 97, 58, 0.3);
+
+    padding: 15px 5px;
+
+    margin: 15px 0;
+}
+
+
+.detail {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    margin-bottom: 12px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 18px;
+}
+
+
+.detail:last-child {
+
+    margin-bottom: 0;
+}
+
+
+.detail-title {
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: var(--olive);
+}
+
+
+/* =========================================
+   CLOSING
+========================================= */
+
+.closing {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 16px;
+
+    font-style: italic;
+
+    line-height: 1.5;
+
+    color: #555;
+
+    margin: 15px auto;
+
+    max-width: 290px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.buttons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+.btn {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 44px;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-family:
+        "Montserrat",-
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.btn:hover {
+
+    transform: translateY(-2px);
+
+    opacity: 0.9;
+}
+
+
+.whatsapp {
+
+    background: var(--burgundy-dark);
+
+    color: var(--white);
+}
+
+
+.location {
+
+    background: var(--olive);
+
+    color: var(--white);
+}
+
+
+/* =========================================
+   MOBILE - NORMAL PHONES
+========================================= */
+
+@media (max-width: 600px) {
+
+    .envelope-container {
+
+        padding:
+            20px 15px;
+    }
+
+
+    .top-text {
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 30px;
+    }
+
+
+    .envelope {
+
+        width: 300px;
+
+        height: 200px;
+    }
+
+
+    .tap-text {
+
+        font-size: 9px;
+
+        margin-top: 24px;
+    }
+
+
+    .card {
+
+        width: 90vw;
+
+        max-width: 350px;
+
+        max-height: 88vh;
+
+        padding:
+            22px 17px;
+
+        border-radius: 14px;
+    }
+
+
+    .small-heading {
+
+        font-size: 9px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .bride-name,
+    .groom-name {
+
+        font-size: 27px;
+    }
+
+
+    .invitation-text {
+
+        font-size: 16px;
+
+        margin:
+            15px auto;
+    }
+
+
+    .date {
+
+        margin: 17px 0;
+    }
+
+
+    .detail-color{
+        justify-content: center;
+    }
+
+}
+
+/* colors of the day */
+.pm{
+    font-size: 26px;
+}
+
+.detail-color {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 14px;
+    gap: 10px;
+    text-transform: capitalize;
+}
+.color1 {
+    color: #fff;
+    width: 150px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #59613a;
+}
+.color2 {
+    color: #fff;
+    width: 150px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #b89555;
+}
+.color3 {
+    width: 150px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #e6c9b8;
+}
+.color4 {
+    width: 150px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #FFFFE3;
+}
+.color5 {
+    color: #fff;
+    width: 150px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #800020;
+}
+
+
+/* =========================================
+   SMALL PHONES
+   Example: 320px - 380px
+========================================= */
+
+@media (max-width: 380px) {
+
+    .envelope {
+
+        width: 270px;
+
+        height: 180px;
+    }
+
+
+    .top-text {
+
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+
+        margin-bottom: 25px;
+    }
+
+
+    .card {
+
+        width: 98vw;
+
+        max-height: 90vh;
+
+        padding:
+            18px 14px;
+    }
+
+
+    .small-heading {
+
+        font-size: 8px;
+    }
+
+
+    .ornament {
+
+        font-size: 25px;
+    }
+
+
+    .together {
+
+        font-size: 14px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .bride-name,
+    .groom-name {
+
+        font-size: 24px;
+    }
+
+
+    .and {
+
+        font-size: 19px;
+    }
+
+
+    .invitation-text {
+
+        font-size: 14px;
+
+        line-height: 1.4;
+
+        margin:
+            12px auto;
+    }
+
+
+    .date {
+
+        margin: 14px 0;
+    }
+
+
+    .date > span {
+
+        font-size: 17px;
+
+        padding-right: 9px;
+    }
+
+
+    .date strong {
+
+        font-size: 11px;
+    }
+
+
+    .date small {
+
+        font-size: 10px;
+    }
+
+
+    .detail {
+
+        font-size: 16px;
+
+        margin-bottom: 9px;
+    }
+
+
+    .closing {
+
+        font-size: 14px;
+
+        margin: 12px auto;
+    }
+
+
+    .btn {
+
+        min-height: 40px;
+
+        font-size: 9px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 320px) {
+
+    .envelope {
+
+        width: 260px;
+
+        height: 165px;
+    }
+
+
+    .card {
+
+        width: 94vw;
+
+        max-height: 92vh;
+
+        padding:
+            16px 12px;
+    }
+
+
+    .bride-name,
+    .groom-name {
+
+        font-size: 22px;
+    }
+
+
+    .invitation-text {
+
+        font-size: 13px;
+    }
+
+
+    .detail {
+
+        font-size: 13px;
+    }
+
+}
+
+
+
+/* Falling flowers background */
+
+/* FLOWERS FALLING BEHIND THE INVITATION */
+
+/* =========================================
+   FALLING REAL FLOWER IMAGES
+========================================= */
+/* 
+#flowerRain {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+}
+
+#flowerRain.active {
+    display: block;
+}
+
+.falling-flower {
+    position: absolute;
+    top: -70px;
+    display: block;
+    object-fit: contain;
+    pointer-events: none;
+    animation: flowerFall linear forwards;
+    will-change: transform;
+}
+
+@keyframes flowerFall {
+    0% {
+        transform: translateY(-70px) rotate(0deg);
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(var(--rotation, 360deg));
+    }
+}
+
+
+/* Keep your invitation card above the flowers */
+/* .card {
+    position: relative;
+    z-index: 20;
+} */
+
+/* Respect users who prefer reduced motion */
+/* @media (prefers-reduced-motion: reduce) {
+    .falling-flower {
+        animation-duration: 8s !important;
+    }
+} */
